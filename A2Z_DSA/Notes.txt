@@ -1,0 +1,3 @@
+- For Debugging create a breakpoint and then debug 
+   - We will see the local and global variables and what value each variable holds
+   - we can see the same for functions as well

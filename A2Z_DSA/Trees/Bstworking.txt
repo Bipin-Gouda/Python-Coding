@@ -1,0 +1,12 @@
+Python BST
+
+root      self.root
+
+14          27
+35          27
+31          27      # root.insert(31) root is 27 so self.data is 27 data=31 
+31          35      # Due to recursion now self.rightChild.insert(data)  ie- 35.insert(31) so 35 is root now  for 31
+10          27                                                          
+10          14
+19          27
+19          14
