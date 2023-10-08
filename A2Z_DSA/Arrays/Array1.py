@@ -36,4 +36,10 @@ def Linearsearch(arr,item):
 Linearsearch(my_array2,100)
 
          
-#  
+#  Delete element  from array
+
+print(my_array2)
+my_array2.remove(4)
+print(my_array2)
+
+
