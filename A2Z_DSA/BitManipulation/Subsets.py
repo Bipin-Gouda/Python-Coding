@@ -1,3 +1,4 @@
+# LEETCODE 78
 def subsets(nums):
     lst=[]
     for i in range(2**len(nums)):
