@@ -1,2 +1,5 @@
-Kadanes algo 
-two pointer
+Kadanes algo - Maximum sum sub array 
+            - smallest sum contingous subarray is also a variation of kadane's algorithm
+Another problem- Longest Subarray with sum K
+
+subarray ie- Contiguous
