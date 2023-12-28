@@ -17,7 +17,7 @@ That is, .__init__() initializes each new instance of the class. eg
 
 class Dog:
     def __init__(self, name, age):
-        self.name = name
+        self.name = name 
         self.age = age
 
 In the body of .__init__(), there are two statements using the self variable:

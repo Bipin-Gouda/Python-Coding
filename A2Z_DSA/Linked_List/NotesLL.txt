@@ -1,4 +1,4 @@
-The self  
+The self  - it denotes the object
 
 - "Class methods" must have an extra first parameter in the method definition. We do not give a value for this parameter
    when we call the method, Python provides it  (only the Class "Methods")
@@ -7,42 +7,155 @@ The self
 -When we call a method of this object as myobject.method(arg1, arg2), this is automatically converted by Python into
  MyClass.method(myobject, arg1, arg2) – this is all the special self is about.
 
+
+ '''
+Following is the structure of the Node class already defined.
+
+class Node :
+    def __init__(self, data) :
+        self.data = data
+        self.next = None
+'''
+
 1. Reversing LL
 
-void revLL(node* &head){
-    node*current=head,*next,*prev=NULL;
-    while(current!=NULL){
-        next=current->next;
-        current->next=prev;
-        prev=current;
-        current=next;
-    }
-    head=prev;
-
-}
+    def reverseList(self, head):
+        prev=None
+        curr=head
+        while(curr!=None):
+            temp=curr.next
+            curr.next=prev
+            prev=curr
+            curr=temp
+        head=prev
+        return head
 
 2. Finding mid element 
 
-void findmid(node* &head){
-    node*p1=head,*p2=head;
-    while(p2!=NULL&&p2->next!=NULL){
-        p1=p1->next;
-        p2=(p2->next)?p2->next->next:NULL;
-    }
-    printf("%d",p1->data);
-
-}
+    def findmid(self):
+        slow=head
+        fast=head
+        while fast!=None and fast.next!=None:
+            fast=fast.next.next
+            slow=slow.next
+        return slow
 
 3. Finding loop in LL 
 
-void findLoop(node* head){
-    node* slow=head,*fast=head->next;
-    while(slow!=NULL && fast!=NULL){
-        if(slow->data == fast->data){
-            print("Loop detected");
-            exit(0);
-        }
-        slow=slow->next;
-        fast=(fast->next)?fast->next->fast->next;
-    }
-}
+    def detectCycle(head) :
+        # Write your code here.
+        # store the entire node not jst the value as value might repeat
+        slow=head
+        fast=head
+        while fast!=None and fast.next!=None:
+            slow=slow.next
+            fast=fast.next.next
+            if slow==fast:
+                return True
+        return False
+
+4. Finding starting point in LL 
+
+    def firstNode(head):
+        # Write your code here
+            temp=head
+            hashset={}
+            index=0
+            while temp!=None:
+                if temp in hashset:
+                    return temp
+                hashset[temp]=index
+                temp=temp.next
+                index+=1
+            return None
+
+5. Find length of loop if it exists
+
+    def lengthOfLoop(head: Node) -> int:
+        # Write your code here
+        temp=head
+        hashset={}
+        index=0
+        while temp!=None:
+            if temp in hashset:
+                return index-hashset[temp]
+            hashset[temp]=index
+            index+=1
+            temp=temp.next
+        return 0
+
+6. Check if LL is Pallindrome w/o extra space
+
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+
+            # Reversing the 2nd half
+            def Reverse(headt):
+                if headt is None or headt.next is None:
+                    return headt
+                newhead = Reverse(headt.next)
+                front = headt.next
+                front.next = headt
+                headt.next = None
+                return newhead
+
+            # Finding the middle
+            temp = head
+            slow = head
+            fast = head
+            while fast.next!=None and fast.next.next!= None:
+                slow = slow.next
+                fast = fast.next.next
+
+            # Reverse the second half
+            tail = Reverse(slow.next)
+
+            # Comparing the first half and 2nd half using 2 pointers 
+            temp2 = head
+            while tail!= None:
+                if temp2.val != tail.val:
+                    return False
+                temp2 = temp2.next
+                tail = tail.next
+
+            return True
+
+6. Check if LL is Pallindrome with extra space
+
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        res=[]
+        temp=head
+        while(temp!=None):
+            res.append(temp.val)
+            temp=temp.next
+        if res==res[::-1]:
+            return True
+        return False
+
+7. Remove Duplicates from sorted LL
+
+    def deleteDuplicates(self, head):
+        temp=head
+        while(temp!=None):
+            t2=temp
+            while t2.next!=None and t2.val==t2.next.val:              #sliding window
+                t2=t2.next
+            temp.next=t2.next 
+            temp=temp.next
+        return head
+
+8. Remove Duplicates from LL unsorted
+
+    def removeDuplicates(head):
+        # keep the first & remove the rest
+        hashset={}
+        temp=head
+        prev=None
+        while temp!=None:
+            if temp.data in hashset:
+                prev.next=temp.next
+            else:s
+                hashset[temp.data]=1
+                prev=temp
+            temp=temp.next
+        return head
+
