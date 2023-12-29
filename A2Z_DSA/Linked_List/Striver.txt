@@ -190,3 +190,28 @@ class Node :
             fast=fast.next.next
         prev.next=slow.next
         return head
+
+11. Remove kth Node from end
+
+    def removeKthNode(head, k):
+        # Write your code here.
+        if head is None:
+            return head
+        temp=head
+        fast=head
+        slow=head
+        index=1
+        while(temp.next!=None):
+            if index<(k+1):
+                fast=fast.next
+            else:
+                slow=slow.next
+                fast=fast.next
+            index+=1
+            temp=temp.next
+            
+        if k==index:
+            head=slow.next
+        else:
+            slow.next=slow.next.next
+        return head
