@@ -159,3 +159,34 @@ class Node :
             temp=temp.next
         return head
 
+9. Odd Even LL first odd index nodes then even index nodes
+
+    def oddEvenList(head):
+        if head==None or head.next==None:
+            return head 
+        odd,oddhead=head,head
+        even,evenhead=head.next,head.next
+        while even!=None and even.next!=None:
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
+        if even!=None:
+            even.next=None 
+        odd.next=evenhead
+        return oddhead
+
+10. Delete Middle of LL
+
+    def deleteMiddle(head):
+        if head is None or head.next is None:
+            return None
+        prev=head
+        slow=head
+        fast=head
+        while fast!=None and fast.next!=None:
+            prev=slow
+            slow=slow.next
+            fast=fast.next.next
+        prev.next=slow.next
+        return head
