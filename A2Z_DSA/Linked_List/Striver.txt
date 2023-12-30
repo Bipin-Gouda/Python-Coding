@@ -215,3 +215,142 @@ class Node :
         else:
             slow.next=slow.next.next
         return head
+
+12. Sort linked list of 0s 1s 2s Optimal one pass approach we use 3 dummy nodes here for zerohead, onehead & twohead
+
+    class Node:
+        def __init__(self, data):
+            self.data = data
+            self.next = None
+            
+
+    def sortList(head):
+        # Write your code here
+        # Write your code here
+        if head==None:
+            return head
+        temp=head
+        zerohead=Node(-1)
+        zero=zerohead
+        onehead=Node(-1)
+        one=onehead
+        twohead=Node(-1)
+        two=twohead
+        while(temp!=None):
+            if temp.data==0:
+                zero.next=temp
+                zero=zero.next
+            elif temp.data==1:
+                one.next=temp
+                one=one.next
+            else:
+                two.next=temp
+                two=two.next
+            temp=temp.next
+        zero.next=onehead.next
+        one.next=twohead.next
+        two.next=None
+        return zerohead.next
+
+(Other approach using 2 times traverse: trav1 store values -> sort-> traverse2 -> value replacement)
+
+13. Get Intersection Node (Naive Approach)
+
+    def getIntersectionNode(headA, headB):
+            #1 use dictionary to store the nodes of 1st traversal then checsk for existence in 2nd traversal
+            temp1=headA
+            temp2=headB
+            coll={}
+            index1=0
+            index2=0
+            while(temp1!=None):
+                coll[temp1]=index1
+                temp1=temp1.next
+                index1+=1
+            while temp2!=None:
+                if temp2 in coll:
+                    return temp2
+                temp2=temp2.next
+                index2+=1
+            return None
+
+14. Add 1 to LL (149+1=150, 999+1=1000)
+
+# Approach one - as we can add only from last (unit's place) so reverse first then add..(if temp is None and carry 1 ie 999+1
+  we insert a node 1 from the head)
+
+    class Node:
+        def __init__(self, data=0, next=None):
+            self.data = data
+            self.next = next
+
+
+    # Don't change the code above.
+
+
+    def addOne(head: Node) -> Node:
+        # write your code here
+        temp=head
+        if head is None:
+            return None
+        def Reverse(headt):
+            if headt is None or headt.next is None:
+                return headt
+            newhead=Reverse(headt.next)
+            front=headt.next
+            front.next=headt
+            headt.next=None
+            return newhead
+        newhead=Reverse(temp)
+        temp=newhead
+        carry=1 # initially we need to add one
+        temp=newhead
+        while(temp!=None):
+            if temp.data+carry<10:
+                temp.data=temp.data+carry
+                carry=0
+                return Reverse(newhead)
+            else:
+                temp.data=0
+                carry=1
+            temp=temp.next
+        if temp is None and carry==1:
+            head=Reverse(newhead)
+        temp=head
+        newnode=Node(1)
+        newnode.next=head
+        head=newnode
+        return head
+
+    # Approach 2 using Recursion as Recursion breaks the problem till the basecase we can reach the unit's place using it and
+    using Backtracking we can return back
+
+        def addOne(head: Node) -> Node:
+            # write your code here
+            temp=head
+
+            # helper to generate final carry
+            def helper(temp):       
+                if temp is None:              # Base condition
+                    return 1
+
+                carry=helper(temp.next)       # function call
+
+                if temp.data+carry>=10:       # Rest Code
+                    temp.data=0
+                    return 1
+
+                temp.data=temp.data+carry
+                return 0
+            
+            carry=helper(temp)  #final carry
+
+            if carry==1:
+                newnode=Node(1)
+                newnode.next=head
+                head=newnode
+
+            return head
+
+
+15. Removing all occurences eg remove 7
