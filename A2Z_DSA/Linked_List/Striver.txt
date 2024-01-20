@@ -86,7 +86,7 @@ class Node :
 
 6. Check if LL is Pallindrome w/o extra space
 
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+    def isPalindrome(head):
 
             # Reversing the 2nd half
             def Reverse(headt):

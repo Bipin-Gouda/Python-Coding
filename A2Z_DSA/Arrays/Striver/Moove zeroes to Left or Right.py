@@ -1,4 +1,4 @@
-#ie moove non zeroes to left so if 0 do nothing else swap
+#ie moove non zeroes to left so if 0 do nothing else swap  
 def moveZerosright(n,a):
     l=0
     for r in range(n):
@@ -7,7 +7,7 @@ def moveZerosright(n,a):
             l+=1
     return a
 
-# if moove zeroes to left if 0 found swap it
+# if moove zeroes to left if 0 found swap it  # order gets changed here
 def moveZerosleft(n,a):
     l=0
     for r in range(n):
