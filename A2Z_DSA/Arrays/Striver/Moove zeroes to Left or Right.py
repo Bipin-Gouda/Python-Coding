@@ -2,7 +2,7 @@
 def moveZerosright(n,a):
     l=0
     for r in range(n):
-        if a[r]:
+        if a[r]!=0:
             a[l],a[r]=a[r],a[l]
             l+=1
     return a

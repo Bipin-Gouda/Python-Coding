@@ -13,7 +13,7 @@ def subseq(i,ls):
     ls.remove(nums[i])
     subseq(i+1,ls)
 
-#subseq(0,[])
+subseq(0,[])
 
 #%%
    # Question : Print all subsequences with sum=k
@@ -33,16 +33,17 @@ def subseqk(i,ls,s):
     subseqk(i+1,ls,s)
 k=5
 s=0
-#subseqk(0,[],s)
+subseqk(0,[],s)
+
 
 #%%
+
 
 # Print only once
 
 def subseqko(i,ls,s):
     if i>=len(nums):
         if s==k:                    # condition satisfied
-            print(ls)
             return True
         else:
             return False            # condition not satisfied
@@ -63,6 +64,7 @@ subseqko(0,[],s)
 #%%
 
 # Count the number of subsequences with sum==k
+
 nums=[3,1,2,4,5]
 def subseqkc(i,s):
     if i>=len(nums):
@@ -80,7 +82,10 @@ def subseqkc(i,s):
 k=5
 s,l,r=0,0,0
 print(subseqkc(0,s))
+
+
 # %%
+
 class Solution:
     def combinationSum(self, candidates, target):                   # NOTE in python ans.append(ls), ans.append(ls[:]) behave differently if ls is a list
         ans=[]                                                      # ans.append(ls) passes a refference of ls so if ls modified it will be modified in ans also
@@ -89,7 +94,7 @@ class Solution:
             if ind>=len(candidates):
                 if target==0:
                     print(ls)
-                    ans.append(ls[:])
+                    ans.append(ls[:])               # instead of making ans, ls global we can also pass them 
                     #print(ans)
                 return
             #pick the element
