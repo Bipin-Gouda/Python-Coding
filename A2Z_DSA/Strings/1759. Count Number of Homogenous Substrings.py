@@ -34,4 +34,5 @@ class Solution:
         return round(res)
     
 obj=Solution()
-print(obj.countHomogenous("abbcccaa"))
+print(obj.countHomogenous(input()))
+#abbccca
